@@ -1,0 +1,35 @@
+# Nothing from the disc, or made from it, ever goes into this repository.
+
+# Builds: the recompiled code, the executable copied out of the disc, the exe
+build/
+out/
+
+# The code recompiled from the disc's executable (tools/gh2.py writes it here)
+lib/PS2Recomp/ps2xRuntime/src/runner/
+
+# Disc images and anything taken from them
+*.iso
+*.ISO
+*.chd
+*.bin
+*.cue
+*.elf
+*.ELF
+*.irx
+*.IRX
+SLUS_*
+iso/
+data/
+memcards/
+*.ps2
+
+# Packages of a build (they hold recompiled code: personal use only)
+*.zip
+
+# Editors and tools
+__pycache__/
+*.pyc
+.vscode/
+.vs/
+.idea/
+*.log

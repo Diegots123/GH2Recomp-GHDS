@@ -1,0 +1,107 @@
+GH2 Recomp - Guitar Hero II (PS2, USA) recompilado para PC
+
+O QUE PRECISA
+  A imagem do SEU disco do Guitar Hero II (USA), SLUS-21447, versao 1.00, em .iso.
+  Coloque o .iso na pasta "iso" ao lado do GH2Recomp.exe (ou arraste o .iso
+  sobre o exe). Sem ela o jogo nao abre: nada do disco vem junto com o exe.
+
+  Na primeira vez o GH2Recomp.exe confere a imagem inteira com a do Redump
+  (alguns segundos; so o disco original, sem arquivos modificados, abre) e
+  copia o executavel do disco para data\SLUS_214.47. Os saves ficam em
+  memcards\. O registro de cada execucao fica em GH2Recomp.log. Os shaders
+  ja compilados ficam em cache\ (a primeira vez que um efeito aparece pode
+  dar uma travadinha; nas proximas, nao).
+
+  Dica: deixe a pasta fora do OneDrive (a Area de Trabalho costuma estar
+  nele), por exemplo em C:\Jogos\GH2Recomp. O OneDrive sincroniza os
+  arquivos que o jogo grava enquanto voce joga.
+
+  Windows 10 ou 11 de 64 bits, placa de video com OpenGL 4.3 ou Direct3D 11
+  (video integrado serve) e processador de 2 threads ou mais. Com 2 threads
+  roda liso; programas pesados abertos atras podem pesar.
+
+CONTROLES
+  Como no PS2, a porta 1 e uma guitarra ou um DualShock 2:
+    teclado LIGADO (F1)          -> o modo do teclado; controles ignorados
+    guitarra conectada           -> guitarra
+    controle (gamepad) conectado -> DualShock 2
+    nada conectado               -> o modo do teclado
+  O tipo so muda no menu principal (o jogo ve o controle sair e voltar por
+  meio segundo). Em qualquer outra tela, inclusive na musica, ele fica como
+  esta, mesmo que um controle seja conectado ou desconectado.
+
+  DualShock 2, por adaptador USB. Os botoes sao fixos, os do GH2 original,
+  sem rebind:
+    L2 verde, L1 vermelho, R1 amarelo, R2 azul, X laranja (sem palhetar)
+    Select Star Power, Start pausa, analogico esquerdo whammy
+    Menus: direcional; X confirma, Triangulo volta
+  Adaptadores: o reconhecimento nao depende do nome. Vale qualquer controle
+  que o SDL reconheca, mais os cerca de 2000 do gamecontrollerdb.txt (base
+  da comunidade do SDL, ao lado do exe; ele inclui varios adaptadores de PS2).
+  Um adaptador que nenhum dos dois conhece, com 10 botoes ou mais, usa a
+  ordem da maioria dos adaptadores de PS2 (Triangulo, Circulo, X, Quadrado,
+  L2, R2, L1, R1, Select, Start).
+
+  Guitarras USB: as de Xbox 360 (Guitar Hero e Rock Band), PS3 (Guitar Hero
+  e Rock Band), Wii por adaptador raphnet, Rock Band 4 (PS4/PS5/Xbox One),
+  Riffmaster e a Guitar Hero World Tour de PC viram a guitarra do PS2:
+  trastes, palhetada, Start, Star Power (Select ou tilt) e whammy. Outras
+  guitarras que o SDL reconhece usam o layout do Xbox 360 ou do PS3.
+  Guitarra de PS2 no adaptador USB: conecte-a ao adaptador antes de abrir o
+  jogo (ou antes de ligar o adaptador). Toda guitarra de PS2 segura o
+  direcional para a esquerda desde que e ligada, e e assim que o GH2 a
+  reconhece: em 2 segundos ela vira guitarra. Um controle que nao faz isso
+  e DualShock 2 de vez.
+
+  Teclado: F1, no menu principal, abre a tela do teclado (por cima do
+  jogo; ela fecha sozinha se o jogo sair do menu principal).
+    Ao abrir o jogo, o teclado comeca LIGADO se nenhum controle ou guitarra
+    estiver conectado, e DESLIGADO se houver um. Depois, o F1 muda.
+    Teclado LIGADO: joga antes de qualquer controle. DESLIGADO: so joga
+    quando nenhum controle esta conectado.
+    Modo PALHETANDO: segure o traste e palhete (o jogo ve uma guitarra).
+    Modo SEM PALHETAR: o traste toca a nota, como o GH2 joga com o DualShock 2.
+    Na musica valem as teclas do modo; nos menus (e na pausa), as dos menus.
+    Rebind: uma tecla por acao; escolher uma tecla que ja esta em outra acao
+    da mesma lista troca as duas. F1, F11 e Esc sao reservadas.
+    Whammy: segure a tecla e o whammy vai e volta sozinho, como mexer o
+    analogico (ou a alavanca) sem parar.
+    Padrao na musica: trastes 1 2 3 4 5, palhetada seta para cima/baixo,
+    Start Enter, Star Power Backspace, whammy Shift direito.
+    Padrao nos menus: setas, Enter confirma, Backspace volta, Espaco e Start
+    (por exemplo, para aceitar o nome da banda).
+  Tudo o que muda no F1 fica gravado em GH2Recomp.ini.
+  F11 ou Alt+Enter: tela cheia.
+
+CONFIGURACOES
+  GH2Recomp.ini (resolucao interna, tela cheia, tamanho da janela, vsync,
+  renderizador, calibracao de audio; o teclado tambem, mas e mais facil
+  muda-lo pelo F1).
+  PC fraco ou video integrado: upscale = 1 ou 2 e, se ficar pesado,
+  renderer = d3d11 (Direct3D 11), que costuma render mais nessas placas.
+  Ainda pesado: venue = off tira o palco, a banda e a plateia (fundo preto);
+  a jogabilidade nao muda.
+  audio_offset = <ms> e a calibracao de audio: desloca o som das musicas em
+  relacao as notas (de -500 a 500 ms), como as ISOs com o audio regravado,
+  sem mexer no disco. Negativo adianta o som (para quem ouve a nota depois
+  de ela cruzar a linha), positivo atrasa. A calibracao de lag do menu do
+  jogo continua valendo junto.
+  vu1_thread = auto (padrao) roda o processador grafico do PS2 (VU1) numa
+  thread propria quando o PC tem 2 threads ou mais livres: menos trabalho
+  para a thread do jogo. on e off forcam.
+  priority = above_normal (padrao) deixa o jogo na frente dos programas
+  abertos atras (navegador, antivirus); normal volta ao de sempre.
+
+USO PESSOAL
+  O GH2Recomp.exe contem codigo traduzido do executavel do seu proprio disco.
+  Ele e para o seu uso. Nao o distribua: quem quiser jogar deve compilar a
+  partir da propria ISO, com o codigo-fonte do projeto.
+
+LICENCAS
+  Este programa inclui codigo do PCSX2 (GS e microVU, GPL-3.0-ou-posterior),
+  do GH Classic (modulo de som, GPL-3.0), do PS2Recomp, do SDL3 (zlib), do
+  SDL_GameControllerDB (gamecontrollerdb.txt, zlib), do
+  raylib (zlib), do Dear ImGui (MIT), do fmt (MIT) e usa as DLLs do FFmpeg
+  (LGPL-2.1-ou-posterior). O codigo-fonte completo:
+  https://github.com/Diegots123/GH2Recomp-GHDS
+  Detalhes em LICENCAS.txt.

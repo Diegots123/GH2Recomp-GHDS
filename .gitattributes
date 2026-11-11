@@ -1,0 +1,3 @@
+# Files are kept exactly as committed on every system (no line-ending
+# conversion), so a checkout made on Windows builds the same in WSL.
+* -text
