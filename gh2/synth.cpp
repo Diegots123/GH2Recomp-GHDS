@@ -99,7 +99,7 @@ namespace ghr
                     static const bool traceCmds = std::getenv("GH1_TRACE") && std::strstr(std::getenv("GH1_TRACE"), "synthcmd");
                     if (traceCmds && cmd != 409u)
                     {
-                        std::cerr << "[gh2 synthcmd] " << cmd << " len " << len;
+                        std::cerr << "[gh2 synthcmd] @" << s_framesRendered.load(std::memory_order_relaxed) << ' ' << cmd << " len " << len;
                         for (int32_t w = 0; w + 4 <= len && w < 16; w += 4)
                             std::cerr << ' ' << load<int32_t>(s_rdram, data + static_cast<uint32_t>(w));
                         std::cerr << std::endl;

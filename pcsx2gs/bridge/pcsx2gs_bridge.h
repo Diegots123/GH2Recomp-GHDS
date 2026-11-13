@@ -44,6 +44,11 @@ namespace pcsx2gs
         bool vsync = false;     // present on the host's vertical blank
         std::string cacheDir;   // where compiled shaders are kept between runs (UTF-8)
         std::string programList; // shader programs to make at the start besides the cache's own list (UTF-8)
+        // The game's hardware-renderer fixes from PCSX2's game database
+        // (GameIndex.yaml gsHWFixes), as PCSX2 applies them: PCSX2's
+        // GSHalfPixelOffset and GSNativeScaling values, 0 = off.
+        int halfPixelOffset = 0;
+        int nativeScaling = 0;
     };
 
     bool open(const NativeWindow &window, const Settings &settings, std::string &error);

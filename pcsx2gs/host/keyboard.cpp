@@ -277,13 +277,16 @@ namespace pcsx2gs::keyboard
                "# O teclado comeca ligado se nenhum controle ou guitarra estiver conectado\r\n"
                "# ao abrir o jogo, e desligado se houver um; o F1 liga e desliga depois.\r\n"
                "#   keyboard_mode = strum  : segure o traste e palhete (o jogo ve uma guitarra)\r\n"
-               "#   keyboard_mode = nostrum: sem palhetar, como o GH1 joga com o DualShock 2\r\n";
+               "#   keyboard_mode = nostrum: sem palhetar, como o jogo joga com o DualShock 2\r\n";
         out << "keyboard_mode = " << (c.noStrum ? "nostrum" : "strum") << "\r\n";
         out << "\r\n# Uma tecla por acao, sem tecla repetida na mesma secao. Nomes das teclas\r\n"
                "# como o SDL os escreve: 1, A, F2, Up, Down, Left, Right, Return, Space,\r\n"
                "# Backspace, Tab, Left Shift, Right Shift, Left Ctrl, ... (none: nenhuma).\r\n"
                "# F1, F11 e Escape sao reservadas. Nos menus valem as teclas de [keys.menu];\r\n"
-               "# na musica, as do modo escolhido.\r\n";
+               "# na musica, as do modo escolhido.\r\n"
+               "# No modo strum, os trastes de [keys.strum] valem tambem nos menus, como os da\r\n"
+               "# guitarra (para os cheats do menu principal), menos uma tecla que ja esteja\r\n"
+               "# em [keys.menu].\r\n";
         for (int l = 0; l < kLayerCount; ++l)
         {
             const Layer &L = kLayers[l];

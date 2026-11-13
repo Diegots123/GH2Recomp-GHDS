@@ -30,7 +30,7 @@ CONTROLES
   meio segundo). Em qualquer outra tela, inclusive na musica, ele fica como
   esta, mesmo que um controle seja conectado ou desconectado.
 
-  DualShock 2, por adaptador USB. Os botoes sao fixos, os do GH2 original,
+  DualShock 2, por adaptador USB. Os botoes sao fixos, os do jogo original,
   sem rebind:
     L2 verde, L1 vermelho, R1 amarelo, R2 azul, X laranja (sem palhetar)
     Select Star Power, Start pausa, analogico esquerdo whammy
@@ -47,21 +47,38 @@ CONTROLES
   Riffmaster e a Guitar Hero World Tour de PC viram a guitarra do PS2:
   trastes, palhetada, Start, Star Power (Select ou tilt) e whammy. Outras
   guitarras que o SDL reconhece usam o layout do Xbox 360 ou do PS3.
-  Guitarra de PS2 no adaptador USB: conecte-a ao adaptador antes de abrir o
-  jogo (ou antes de ligar o adaptador). Toda guitarra de PS2 segura o
-  direcional para a esquerda desde que e ligada, e e assim que o GH2 a
-  reconhece: em 2 segundos ela vira guitarra. Um controle que nao faz isso
-  e DualShock 2 de vez.
+  Guitarra de PS2 no adaptador USB: toda guitarra de PS2 segura o
+  direcional para a esquerda desde que e ligada, e e assim que o jogo a
+  reconhece: 2 segundos depois de o adaptador mostrar o primeiro botao (na
+  hora, ou no primeiro toque na guitarra: alguns adaptadores so mandam
+  alguma coisa quando um botao muda), ela vira guitarra, no menu principal.
+  Um controle que nao faz isso e DualShock 2 de vez. Muitos adaptadores
+  (o "Twin USB Joystick" entre eles) mandam o direcional de um controle no
+  modo digital, como a guitarra fica, como o analogico esquerdo: isso
+  tambem conta, e a palhetada vem dali. Nesse caso o whammy nao chega ao
+  PC: a guitarra nao tem o botao Analog, quem liga o modo analogico dela e
+  o PS2, e esses adaptadores nao fazem isso (nem o PC tem como pedir). O
+  Star Power pelo Select e pela inclinacao funciona. Para ter o whammy, use
+  um adaptador que ligue o modo analogico sozinho (o da raphnet, por
+  exemplo). Se a sua guitarra de PS2 ainda entrar como DualShock, ponha
+  "gamepad = guitar" no GH2Recomp.ini (todo controle que nao e uma
+  guitarra conhecida vira guitarra de PS2; "gamepad = dualshock" faz o
+  contrario).
 
   Teclado: F1, no menu principal, abre a tela do teclado (por cima do
-  jogo; ela fecha sozinha se o jogo sair do menu principal).
+  jogo; ela fecha sozinha se o jogo sair do menu principal). Em tela cheia,
+  o jogo sai da tela cheia enquanto ela esta aberta e volta ao fecha-la.
     Ao abrir o jogo, o teclado comeca LIGADO se nenhum controle ou guitarra
     estiver conectado, e DESLIGADO se houver um. Depois, o F1 muda.
     Teclado LIGADO: joga antes de qualquer controle. DESLIGADO: so joga
     quando nenhum controle esta conectado.
     Modo PALHETANDO: segure o traste e palhete (o jogo ve uma guitarra).
-    Modo SEM PALHETAR: o traste toca a nota, como o GH2 joga com o DualShock 2.
+    Modo SEM PALHETAR: o traste toca a nota, como o jogo joga com o DualShock 2.
     Na musica valem as teclas do modo; nos menus (e na pausa), as dos menus.
+    No modo PALHETANDO, os trastes (1 a 5) valem tambem nos menus, como os
+    da guitarra (verde confirma, vermelho volta): e assim que se digitam os
+    cheats no menu principal (so os trastes, sem palhetar, um logo depois
+    do outro).
     Rebind: uma tecla por acao; escolher uma tecla que ja esta em outra acao
     da mesma lista troca as duas. F1, F11 e Esc sao reservadas.
     Whammy: segure a tecla e o whammy vai e volta sozinho, como mexer o
@@ -75,8 +92,8 @@ CONTROLES
 
 CONFIGURACOES
   GH2Recomp.ini (resolucao interna, tela cheia, tamanho da janela, vsync,
-  renderizador, calibracao de audio; o teclado tambem, mas e mais facil
-  muda-lo pelo F1).
+  renderizador, calibracao de audio, guitarra de PS2 no adaptador; o
+  teclado tambem, mas e mais facil muda-lo pelo F1).
   PC fraco ou video integrado: upscale = 1 ou 2 e, se ficar pesado,
   renderer = d3d11 (Direct3D 11), que costuma render mais nessas placas.
   Ainda pesado: venue = off tira o palco, a banda e a plateia (fundo preto);

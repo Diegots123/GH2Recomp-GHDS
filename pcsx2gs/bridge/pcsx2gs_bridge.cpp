@@ -488,6 +488,10 @@ namespace pcsx2gs
 
         Pcsx2Config::GSOptions options;
         options.UpscaleMultiplier = settings.upscale;
+        if (settings.halfPixelOffset > 0 && settings.halfPixelOffset < static_cast<int>(GSHalfPixelOffset::MaxCount))
+            options.UserHacks_HalfPixelOffset = static_cast<GSHalfPixelOffset>(settings.halfPixelOffset);
+        if (settings.nativeScaling > 0 && settings.nativeScaling < static_cast<int>(GSNativeScaling::MaxCount))
+            options.UserHacks_NativeScaling = static_cast<GSNativeScaling>(settings.nativeScaling);
         // A PS2 on a 4:3 television, and nothing on top of the picture.
         options.AspectRatio = AspectRatioType::R4_3;
         EmuConfig.GS = options;

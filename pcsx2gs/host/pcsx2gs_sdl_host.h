@@ -14,6 +14,13 @@
 
 namespace pcsx2gs
 {
+    enum class GamepadAs
+    {
+        Auto,
+        Guitar,
+        DualShock,
+    };
+
     struct HostConfig
     {
         float upscale = 1.0f;     // internal resolution, multiples of native
@@ -26,10 +33,16 @@ namespace pcsx2gs
         bool fullscreen = false;  // borderless on the desktop; F11 or Alt+Enter toggles
         bool venue = true;        // false: nothing drawn behind the track (venue = off, for weak GPUs)
         int audioOffsetMs = 0;    // audio_offset: the songs' audio against the notes, in ms (+ later, - earlier)
+        int gsHalfPixelOffset = 0; // the game's GS fixes from PCSX2's game database (set by the game layer)
+        int gsNativeScaling = 0;
         int vu1Thread = -1;       // VIF1/VU1 on a thread of its own: 1 on, 0 off, -1 when 2+ CPU threads are free
         bool raisePriority = true; // Windows: the process above normal priority (priority = above_normal|normal)
         bool stats = false;       // print presented frames per second
         bool guitar = true;       // false: port 1 is always a DualShock 2 (GH1_JOYPAD=1)
+        // gamepad = auto|guitar|dualshock: what a gamepad that is no known
+        // guitar plays as (a PS2-to-USB adapter): auto, a PS2 guitar when it
+        // holds D-Left (as they all do), else a DualShock 2.
+        GamepadAs gamepadAs = GamepadAs::Auto;
         keyboard::Config keyboard; // on/off, mode and keys (F1 changes them)
         bool keyboardForced = false; // on/off set by GH1_KEYBOARD, not by what is connected at start
         std::string iniPath;       // GH1Recomp.ini beside the exe
@@ -65,10 +78,10 @@ namespace pcsx2gs
     // Reads HostConfig from GH1Recomp.ini beside the exe (key = value lines:
     // upscale, renderer = auto|opengl|d3d11|d3d12|sw, vsync, window = <w>x<h>, fullscreen, venue = on|off,
     // audio_offset = <ms>,
-    // vu1_thread = auto|on|off, priority = above_normal|normal, and
+    // vu1_thread = auto|on|off, priority = above_normal|normal, gamepad = auto|guitar|dualshock, and
     // the keyboard's, see keyboard.h), then
     // from the environment, which wins: GH1_UPSCALE, GH1_RENDERER (the same names, or null),
-    // GH1_VSYNC=1, GH1_FULLSCREEN=1, GH1_VENUE=off, GH1_AUDIO_OFFSET=<ms>, GH1_VU1_THREAD=0|1, GH1_PRIORITY=normal, GH1_STATS=1, GH1_JOYPAD=1 (port 1 a
+    // GH1_VSYNC=1, GH1_FULLSCREEN=1, GH1_VENUE=off, GH1_AUDIO_OFFSET=<ms>, GH1_VU1_THREAD=0|1, GH1_PRIORITY=normal, GH1_STATS=1, GH1_GAMEPAD=auto|guitar|dualshock, GH1_JOYPAD=1 (port 1 a
     // DualShock, not a guitar), GH1_WINDOW=<w>x<h>.
     HostConfig hostConfigFromEnvironment();
 

@@ -267,6 +267,16 @@ namespace pcsx2gs::guitars
         const char *name = SDL_GetJoystickName(d.joystick);
         std::fprintf(stderr, "[host] controller: %s (%04x:%04x) as %s\n", name ? name : "?", vendor, product,
                      d.label.c_str());
+        {
+            // What it is made of, for a controller that does not work as it should.
+            char guid[64];
+            SDL_GUIDToString(SDL_GetJoystickGUID(d.joystick), guid, sizeof(guid));
+            char *mapping = d.gamepad ? SDL_GetGamepadMapping(d.gamepad) : nullptr;
+            std::fprintf(stderr, "[host]   %d buttons, %d axes, %d hats; GUID %s; layout %s\n",
+                         SDL_GetNumJoystickButtons(d.joystick), SDL_GetNumJoystickAxes(d.joystick),
+                         SDL_GetNumJoystickHats(d.joystick), guid, mapping ? mapping : "(none)");
+            SDL_free(mapping);
+        }
         return true;
     }
 

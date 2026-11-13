@@ -61,12 +61,18 @@ namespace pcsx2gs::guitars
         std::string label;
         bool guitar = false; // false: a gamepad with the DualShock 2's buttons
         Layout layout;
-        // Kept by the host for a gamepad: frames since it was opened, frames
-        // D-Left has been held (a PS2 guitar on a PS2-to-USB adapter holds it
-        // always), whether it is known not to be such a guitar, and the last
-        // frame any of its buttons was down.
+        // Kept by the host for a gamepad: whether it has shown a button
+        // down yet, frames since it did, frames D-Left has been held (a PS2
+        // guitar on a PS2-to-USB adapter holds it always) and then not held,
+        // whether it is known not to be such a guitar, and the last frame
+        // any of its buttons was down.
+        bool heard = false;
+        bool dpadOnStick = false; // a PS2 guitar whose adapter gives its d-pad as the left stick
+        std::string rawLast;      // the host's log of what a gamepad sends, as it changes
+        uint32_t rawLines = 0;
         uint32_t age = 0;
         uint32_t leftHeld = 0;
+        uint32_t leftFree = 0;
         bool notGuitar = false;
         uint64_t lastPress = 0;
     };

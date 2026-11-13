@@ -7,7 +7,8 @@
 // strumming: GH1's own joypad play), and has one key per action in three
 // layers: the game with each of the two, and the menus (which GH1 reads
 // differently from a guitar and from a DualShock: the menu keys press what
-// each of them selects and goes back with). A key is in a layer at most
+// each of them selects and goes back with; as a guitar, the fret keys are
+// frets there too, for the main menu's cheats). A key is in a layer at most
 // once, and an action has one key.
 
 #include <array>
